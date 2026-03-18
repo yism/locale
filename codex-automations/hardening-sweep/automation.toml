@@ -1,0 +1,10 @@
+version = 1
+id = "hardening-sweep"
+name = "Hardening Sweep"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Run the repository verification workflow in /Users/mchap/Projects/Locale. Read docs/verification-workflow.md, docs/change-pipeline.md, and docs/automation-loop-plan.md first. Then run the bounded hardening loop: refresh fixtures if needed, run tests, inspect failures, and classify the result as no change, compatible change, blocking change, or future watch. Only make narrow compatible patches that preserve the evaluate-only product boundary. If a fix would change token claims, reason-code semantics, action taxonomy, pack precedence, or MCP request or response shapes, stop and produce a blocking report for human review."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=12"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

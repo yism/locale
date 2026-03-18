@@ -1,0 +1,10 @@
+{
+  "id": "commerce-guarded",
+  "version": "2026-03-v0.1",
+  "priority": 200,
+  "default_outcomes": {
+    "commerce": "deny"
+  },
+  "budget_overrides": {},
+  "environment_overrides": {}
+}

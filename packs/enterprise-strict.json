@@ -1,0 +1,18 @@
+{
+  "id": "enterprise-strict",
+  "version": "2026-03-v0.1",
+  "priority": 100,
+  "default_outcomes": {
+    "network": "allow_with_warning"
+  },
+  "budget_overrides": {},
+  "environment_overrides": {
+    "prod": {
+      "default_outcomes": {
+        "write": "deny",
+        "admin": "deny"
+      },
+      "budget_overrides": {}
+    }
+  }
+}

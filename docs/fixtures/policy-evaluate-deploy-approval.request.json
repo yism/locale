@@ -1,0 +1,14 @@
+{
+  "capability_token": "fixture:capabilities-get.response.json#capability_token",
+  "action": {
+    "protocol": "mcp",
+    "action_class": "deploy",
+    "target": "vercel.deploy",
+    "input_hash": "sha256:06d033ece6645de592db973644cf7357255f24536ff7b03c3b2ace10736f7636",
+    "resource_refs": [
+      "project_hash:sha256:ef2d127de37b94255c1b59d65e5520f5f7f6ab1d74e3d3e06b4d02a51a0f1f67"
+    ],
+    "idempotency_key": "idem_deploy_001",
+    "trace_id": "trace_deploy_001"
+  }
+}

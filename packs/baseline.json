@@ -1,0 +1,26 @@
+{
+  "id": "baseline",
+  "version": "2026-03-v0.1",
+  "priority": 0,
+  "default_outcomes": {
+    "read": "allow",
+    "write": "allow_with_approval",
+    "network": "allow",
+    "deploy": "allow_with_approval",
+    "commerce": "allow_with_approval",
+    "identity": "allow_with_approval",
+    "secrets": "allow_with_approval",
+    "admin": "allow_with_approval"
+  },
+  "budget_overrides": {
+    "read_per_minute": 200,
+    "network_per_minute": 60,
+    "deploy_per_run": 0,
+    "commerce_per_run": 0,
+    "write_per_run": 0,
+    "identity_per_run": 0,
+    "secrets_per_run": 0,
+    "admin_per_run": 0
+  },
+  "environment_overrides": {}
+}

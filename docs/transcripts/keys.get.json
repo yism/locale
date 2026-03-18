@@ -1,0 +1,136 @@
+[
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "keys-init",
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-06-18",
+        "clientInfo": {
+          "name": "fixture-client",
+          "version": "0.1.0"
+        },
+        "capabilities": {}
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "keys-init",
+      "error": {
+        "code": -32004,
+        "message": "Already initialized",
+        "data": {
+          "code": "already_initialized"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "keys-list",
+      "method": "tools/list",
+      "params": {}
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "keys-list",
+      "result": {
+        "tools": [
+          {
+            "name": "capabilities.get",
+            "description": "Issue a short-lived capability token for an orchestrator mission context.",
+            "inputSchema": {
+              "type": "object",
+              "required": [
+                "subject"
+              ],
+              "properties": {
+                "subject": {
+                  "type": "object"
+                },
+                "context": {
+                  "type": "object"
+                },
+                "requested_packs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "policy.evaluate",
+            "description": "Evaluate a normalized action descriptor against effective policy.",
+            "inputSchema": {
+              "type": "object",
+              "required": [
+                "capability_token",
+                "action"
+              ],
+              "properties": {
+                "capability_token": {
+                  "type": "string"
+                },
+                "action": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "name": "keys.get",
+            "description": "Return verification keys and current protocol metadata.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "keys-call",
+      "method": "tools/call",
+      "params": {
+        "name": "keys.get",
+        "arguments": {}
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "keys-call",
+      "result": {
+        "content": [],
+        "structuredContent": {
+          "protocol_version": "2026-03-v0.2",
+          "supported_token_formats": [
+            "jws"
+          ],
+          "keys": [
+            {
+              "kid": "kid_2026_03",
+              "kty": "OKP",
+              "crv": "Ed25519",
+              "alg": "EdDSA",
+              "use": "sig",
+              "x": "a55L8irICcrjR4AHzlLuJdKh7V8dFHGE7PlqXCmzjP0"
+            }
+          ],
+          "policy_packs": [
+            "baseline",
+            "ci-noninteractive",
+            "commerce-guarded",
+            "enterprise-strict",
+            "regulated-data"
+          ]
+        }
+      }
+    }
+  }
+]

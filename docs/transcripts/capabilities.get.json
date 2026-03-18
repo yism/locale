@@ -1,0 +1,143 @@
+[
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-init",
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-06-18",
+        "clientInfo": {
+          "name": "fixture-client",
+          "version": "0.1.0"
+        },
+        "capabilities": {}
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-init",
+      "result": {
+        "protocolVersion": "2025-06-18",
+        "serverInfo": {
+          "name": "capability-policy-authority",
+          "version": "2026-03-v0.2"
+        },
+        "capabilities": {
+          "tools": {
+            "listChanged": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-list",
+      "method": "tools/list",
+      "params": {}
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-list",
+      "result": {
+        "tools": [
+          {
+            "name": "capabilities.get",
+            "description": "Issue a short-lived capability token for an orchestrator mission context.",
+            "inputSchema": {
+              "type": "object",
+              "required": [
+                "subject"
+              ],
+              "properties": {
+                "subject": {
+                  "type": "object"
+                },
+                "context": {
+                  "type": "object"
+                },
+                "requested_packs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "policy.evaluate",
+            "description": "Evaluate a normalized action descriptor against effective policy.",
+            "inputSchema": {
+              "type": "object",
+              "required": [
+                "capability_token",
+                "action"
+              ],
+              "properties": {
+                "capability_token": {
+                  "type": "string"
+                },
+                "action": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "name": "keys.get",
+            "description": "Return verification keys and current protocol metadata.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-call",
+      "method": "tools/call",
+      "params": {
+        "name": "capabilities.get",
+        "arguments": {
+          "subject": {
+            "workload_id": "orchestrator.codex.local",
+            "tenant_id": "tenant_demo",
+            "mission_id": "mission_checkout_preview",
+            "environment": "prod"
+          },
+          "context": {
+            "repo_hash": "sha256:2d711642b726b04401627ca9fbac32f5da7e5c5f0f5d6d3f3d7d0f8f7c0c11aa",
+            "workspace_hash": "sha256:4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+          },
+          "requested_packs": [
+            "enterprise-strict"
+          ]
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "capabilities-call",
+      "result": {
+        "content": [],
+        "structuredContent": {
+          "token_format": "jws",
+          "authority_mode": "reference",
+          "capability_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiY2FwYWJpbGl0eSJ9.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwic3ViIjoib3JjaGVzdHJhdG9yLmNvZGV4LmxvY2FsIiwidGlkIjoidGVuYW50X2RlbW8iLCJtaWQiOiJtaXNzaW9uX2NoZWNrb3V0X3ByZXZpZXciLCJlbnYiOiJwcm9kIiwiaWF0IjoxNzczODU2ODAwLCJleHAiOjE3NzM4NjA0MDAsImtpZCI6ImtpZF8yMDI2XzAzIiwicHZlciI6IjIwMjYtMDMtdjAuMiIsInBhY2tzIjpbImJhc2VsaW5lIiwiZW50ZXJwcmlzZS1zdHJpY3QiXSwiY2FwIjpbInJlYWQiLCJuZXR3b3JrIl0sImJ1ZCI6eyJyZWFkX3Blcl9taW51dGUiOjIwMCwibmV0d29ya19wZXJfbWludXRlIjo2MCwiZGVwbG95X3Blcl9ydW4iOjAsImNvbW1lcmNlX3Blcl9ydW4iOjAsIndyaXRlX3Blcl9ydW4iOjAsImlkZW50aXR5X3Blcl9ydW4iOjAsInNlY3JldHNfcGVyX3J1biI6MCwiYWRtaW5fcGVyX3J1biI6MH0sImN0eCI6eyJyZXBvX2hhc2giOiJzaGEyNTY6MmQ3MTE2NDJiNzI2YjA0NDAxNjI3Y2E5ZmJhYzMyZjVkYTdlNWM1ZjBmNWQ2ZDNmM2Q3ZDBmOGY3YzBjMTFhYSIsIndvcmtzcGFjZV9oYXNoIjoic2hhMjU2OjRiMjI3Nzc3ZDRkZDFmYzYxYzZmODg0ZjQ4NjQxZDAyYjRkMTIxZDNmZDMyOGNiMDhiNTUzMWZjYWNkYWJmOGEifX0.oCnrhYQ2ZkFlh1ZBZbz1ni62VSJiZtZpXA-8w4JyTJJhpVufIl2Nc426ufRKrGIsnNqxmFRyOgzd6w7uextDAQ",
+          "expires_at": "2026-03-18T19:00:00.000Z",
+          "effective_packs": [
+            "baseline",
+            "enterprise-strict"
+          ],
+          "issuance_warnings": []
+        }
+      }
+    }
+  }
+]

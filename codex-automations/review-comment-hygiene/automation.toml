@@ -1,0 +1,10 @@
+version = 1
+id = "review-comment-hygiene"
+name = "Review Comment Hygiene"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md) with [$gh-address-comments](/Users/mchap/.codex/skills/gh-address-comments/SKILL.md). Inspect the open Locale PR for unresolved review comments, summarize the threads that need action, and open an inbox-style report with the smallest likely fix scope for each thread. Do not implement code changes or respond on GitHub automatically; this is a review hygiene report."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=TH;BYHOUR=9;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

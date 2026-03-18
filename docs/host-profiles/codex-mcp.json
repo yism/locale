@@ -1,0 +1,112 @@
+{
+  "profile": "codex-mcp",
+  "description": "Codex-style MCP host handshake with initialize followed by initialized before tool calls.",
+  "sequence": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "codex-init",
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-06-18",
+          "clientInfo": {
+            "name": "codex-debug-client",
+            "version": "0.1.0"
+          },
+          "capabilities": {}
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": "codex-init",
+        "result": {
+          "protocolVersion": "2025-06-18",
+          "serverInfo": {
+            "name": "capability-policy-authority",
+            "version": "2026-03-v0.2"
+          },
+          "capabilities": {
+            "tools": {
+              "listChanged": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized",
+        "params": {}
+      },
+      "response": null
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "codex-list",
+        "method": "tools/list",
+        "params": {}
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": "codex-list",
+        "result": {
+          "tools": [
+            {
+              "name": "capabilities.get",
+              "description": "Issue a short-lived capability token for an orchestrator mission context.",
+              "inputSchema": {
+                "type": "object",
+                "required": [
+                  "subject"
+                ],
+                "properties": {
+                  "subject": {
+                    "type": "object"
+                  },
+                  "context": {
+                    "type": "object"
+                  },
+                  "requested_packs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "policy.evaluate",
+              "description": "Evaluate a normalized action descriptor against effective policy.",
+              "inputSchema": {
+                "type": "object",
+                "required": [
+                  "capability_token",
+                  "action"
+                ],
+                "properties": {
+                  "capability_token": {
+                    "type": "string"
+                  },
+                  "action": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            {
+              "name": "keys.get",
+              "description": "Return verification keys and current protocol metadata.",
+              "inputSchema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

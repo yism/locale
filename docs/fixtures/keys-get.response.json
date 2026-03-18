@@ -1,0 +1,23 @@
+{
+  "protocol_version": "2026-03-v0.2",
+  "supported_token_formats": [
+    "jws"
+  ],
+  "keys": [
+    {
+      "kid": "kid_2026_03",
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "alg": "EdDSA",
+      "use": "sig",
+      "x": "a55L8irICcrjR4AHzlLuJdKh7V8dFHGE7PlqXCmzjP0"
+    }
+  ],
+  "policy_packs": [
+    "baseline",
+    "ci-noninteractive",
+    "commerce-guarded",
+    "enterprise-strict",
+    "regulated-data"
+  ]
+}

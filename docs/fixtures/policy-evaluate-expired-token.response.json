@@ -1,0 +1,20 @@
+{
+  "action_hash": "sha256:unbound",
+  "outcome": "deny",
+  "reason_codes": [
+    "token.expired"
+  ],
+  "message": "Capability token has expired.",
+  "policy_version": "2026-03-v0.2",
+  "policy_packs": [
+    "baseline",
+    "enterprise-strict"
+  ],
+  "budget_effects": {
+    "rate_bucket": null,
+    "units_consumed": 0,
+    "remaining_estimate": null
+  },
+  "approval_requirements": [],
+  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4yIiwib3V0Y29tZSI6ImRlbnkiLCJwb2xpY3lfdmVyc2lvbiI6IjIwMjYtMDMtdjAuMiIsInBvbGljeV9wYWNrcyI6WyJiYXNlbGluZSIsImVudGVycHJpc2Utc3RyaWN0Il0sInJlYXNvbl9jb2RlcyI6WyJ0b2tlbi5leHBpcmVkIl0sImFjdGlvbl9oYXNoIjoic2hhMjU2OnVuYm91bmQiLCJhcHByb3ZhbF9yZXF1aXJlbWVudHMiOltdLCJpYXQiOjE3NzM4NjQwMDEsImV4cCI6MTc3Mzg2NzYwMX0.6okrPiuBW-HuHU03vp_z_VdKJBKkAA7cMcK7yJ3KkDSGfWM8I2QwQj3IgedMbgMhcjkf7U14nROQQBeegkrJBA"
+}

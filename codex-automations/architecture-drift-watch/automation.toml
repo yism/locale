@@ -1,0 +1,10 @@
+version = 1
+id = "architecture-drift-watch"
+name = "Architecture Drift Watch"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Compare docs/architecture.md and docs/architecture.mmd against the current MCP tool surface, transcripts, host profiles, chronology, verification workflow, and tests in /Users/mchap/Projects/Locale. If the architecture explainer has drifted, make the smallest compatible patch that restores alignment without widening scope. If restoring alignment would require changing public MCP tool names, request or response shapes, or the evaluate-only boundary, stop and produce a blocking report."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=24"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

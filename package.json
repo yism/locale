@@ -1,0 +1,40 @@
+{
+  "name": "capability-policy-authority",
+  "version": "0.2.0",
+  "description": "MCP-native capability and policy authority for evaluate-only agent preflight, verification, and attestation.",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "capability-policy-authority": "./src/cli.mjs"
+  },
+  "scripts": {
+    "codex:sync": "node scripts/sync-codex-assets.mjs",
+    "fixtures:refresh": "node scripts/refresh-fixtures.mjs",
+    "chronology:refresh": "node scripts/refresh-chronology.mjs",
+    "changelog:refresh": "node scripts/refresh-changelog.mjs",
+    "asi:run": "node scripts/run-asi.mjs",
+    "asi:baseline": "node scripts/run-asi.mjs --update-baseline",
+    "asi:check": "node scripts/run-asi.mjs --fail-on-regression --regress 0.05",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "agent",
+    "policy",
+    "capability",
+    "verification",
+    "attestation",
+    "security"
+  ],
+  "exports": {
+    ".": "./src/index.mjs",
+    "./reference": "./src/reference-authority.mjs",
+    "./verifier": "./src/verifier/index.mjs",
+    "./transport/mcp-server": "./src/transport/mcp-server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,10 @@
+version = 1
+id = "threat-model-watch"
+name = "Threat Model Watch"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Review the current docs, conformance cases, compatibility cases, and public protocol material for new attack patterns, confused-deputy risks, token misuse cases, or host-integration failures that affect evaluate-only capability authorities. Classify the outcome as no change, compatible change, blocking change, or future watch. This is a report-first loop: if the fix would change token claims, pack precedence, or public MCP shapes, stop and write a blocking note for human review."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=FR;BYHOUR=9;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

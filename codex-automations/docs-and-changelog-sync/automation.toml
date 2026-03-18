@@ -1,0 +1,10 @@
+version = 1
+id = "docs-and-changelog-sync"
+name = "Docs and Changelog Sync"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Keep the documentation set in /Users/mchap/Projects/Locale/docs aligned with the current implementation, tests, transcripts, host profiles, and chronology. Update verification docs, adoption docs, and a changelog-style summary derived from chronology and test-visible compatible changes. Treat chronology as the source of historical truth. If the docs would require inventing behavior not reflected in code, tests, fixtures, transcripts, or chronology, stop and report the mismatch instead of guessing."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=24"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

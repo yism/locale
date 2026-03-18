@@ -1,0 +1,15 @@
+{
+  "id": "ci-noninteractive",
+  "version": "2026-03-v0.1",
+  "priority": 300,
+  "default_outcomes": {
+    "write": "deny",
+    "deploy": "deny",
+    "commerce": "deny",
+    "identity": "deny",
+    "secrets": "deny",
+    "admin": "deny"
+  },
+  "budget_overrides": {},
+  "environment_overrides": {}
+}

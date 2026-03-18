@@ -1,0 +1,10 @@
+version = 1
+id = "near-miss-interpreter"
+name = "Near-Miss Interpreter"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Review recent test failures, chronology changes, transcript diffs, and near-miss edge cases in /Users/mchap/Projects/Locale. Produce a concise interpretive report explaining the underlying failure mode or almost-failure mode, classify it as no change, compatible change, blocking change, or future watch, and propose the smallest durable addition to tests, fixtures, host profiles, or docs. Only patch when the change is bounded and compatible. If the issue suggests a public contract change, stop and escalate."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=24"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

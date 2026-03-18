@@ -1,0 +1,18 @@
+{
+  "outcome": "allow",
+  "reason_codes": [],
+  "message": "Action is allowed under effective policy.",
+  "policy_version": "2026-03-v0.2",
+  "policy_packs": [
+    "baseline",
+    "enterprise-strict"
+  ],
+  "budget_effects": {
+    "rate_bucket": "read_per_minute",
+    "units_consumed": 1,
+    "remaining_estimate": 199
+  },
+  "approval_requirements": [],
+  "action_hash": "sha256:5555c4c9077e0aa189d5640da7133af96b3c2d2d8d5f3f77ec1f617d90e9c804",
+  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4yIiwib3V0Y29tZSI6ImFsbG93IiwicG9saWN5X3ZlcnNpb24iOiIyMDI2LTAzLXYwLjIiLCJwb2xpY3lfcGFja3MiOlsiYmFzZWxpbmUiLCJlbnRlcnByaXNlLXN0cmljdCJdLCJyZWFzb25fY29kZXMiOltdLCJhY3Rpb25faGFzaCI6InNoYTI1Njo1NTU1YzRjOTA3N2UwYWExODlkNTY0MGRhNzEzM2FmOTZiM2MyZDJkOGQ1ZjNmNzdlYzFmNjE3ZDkwZTljODA0IiwiYXBwcm92YWxfcmVxdWlyZW1lbnRzIjpbXSwiaWF0IjoxNzczODU2ODAwLCJleHAiOjE3NzM4NjA0MDB9.R515s1gZ4akMN3wUPN06isIua0mfdEjGvzP9PAL_KCrGwGEvxvBHdxEMIvYnsy3IUpQCMQXI4HIuOJicu0_2AA"
+}

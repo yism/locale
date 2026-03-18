@@ -1,0 +1,7 @@
+interface:
+  display_name: "Locale Maintain"
+  short_description: "Maintain Locale without widening its boundary"
+  default_prompt: "Use $locale-maintain to update Locale safely and keep docs, fixtures, chronology, and tests aligned."
+
+policy:
+  allow_implicit_invocation: true

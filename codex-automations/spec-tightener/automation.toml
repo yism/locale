@@ -1,0 +1,10 @@
+version = 1
+id = "spec-tightener"
+name = "Spec Tightener"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Review the current docs in /Users/mchap/Projects/Locale/docs/ for ambiguity, inconsistent terms, duplicate concepts, or statements that could not be tested. Tighten wording without widening scope. If a fix would require adding a new core object, changing the product boundary, or introducing execution, stop and write a blocking note instead."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=12"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

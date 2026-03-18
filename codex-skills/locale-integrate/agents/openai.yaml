@@ -1,0 +1,7 @@
+interface:
+  display_name: "Locale Integrate"
+  short_description: "Adopt Locale in Node MCP hosts safely"
+  default_prompt: "Use $locale-integrate to add Locale's capability-policy-authority to this Node MCP host without widening its scope."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,10 @@
+version = 1
+id = "conformance-planner"
+name = "Conformance Planner"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Read the current spec in /Users/mchap/Projects/Locale/docs/. Produce or update a conformance plan that covers token issuance, offline verification, policy pack composition, baseline safety outcomes, reason-code stability, and deterministic evaluation. Prefer narrow test cases over broad essays. This is a report-first loop: if the spec is too ambiguous to test or the plan implies a public contract change, stop and identify the smallest missing decision instead of patching."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=24"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

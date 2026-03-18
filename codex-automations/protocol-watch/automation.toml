@@ -1,0 +1,10 @@
+version = 1
+id = "protocol-watch"
+name = "Protocol Watch"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Review the current docs in /Users/mchap/Projects/Locale/docs/. Check primary-source MCP, ACP, UCP, and ATXP documentation for changes that affect capability issuance, policy evaluation, offline verification, or signing. If no strong evidence requires a spec change, produce a concise no-change report and stop. If you find a compatible clarification, draft the smallest doc patch. If a protocol change would alter the product boundary, invalidate an invariant, or affect tool shapes or token claims, do not patch; produce a blocking report for human review."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=6"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

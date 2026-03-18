@@ -1,0 +1,22 @@
+{
+  "outcome": "allow_with_approval",
+  "reason_codes": [
+    "policy.approval_required"
+  ],
+  "message": "Action requires approval under effective policy.",
+  "policy_version": "2026-03-v0.2",
+  "policy_packs": [
+    "baseline",
+    "enterprise-strict"
+  ],
+  "budget_effects": {
+    "rate_bucket": "deploy_per_run",
+    "units_consumed": 0,
+    "remaining_estimate": 0
+  },
+  "approval_requirements": [
+    "deploy"
+  ],
+  "action_hash": "sha256:0bb9242abb74431b6db3b0a992c63c48bf0945bf6950ea68fedb0ef639cd9464",
+  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4yIiwib3V0Y29tZSI6ImFsbG93X3dpdGhfYXBwcm92YWwiLCJwb2xpY3lfdmVyc2lvbiI6IjIwMjYtMDMtdjAuMiIsInBvbGljeV9wYWNrcyI6WyJiYXNlbGluZSIsImVudGVycHJpc2Utc3RyaWN0Il0sInJlYXNvbl9jb2RlcyI6WyJwb2xpY3kuYXBwcm92YWxfcmVxdWlyZWQiXSwiYWN0aW9uX2hhc2giOiJzaGEyNTY6MGJiOTI0MmFiYjc0NDMxYjZkYjNiMGE5OTJjNjNjNDhiZjA5NDViZjY5NTBlYTY4ZmVkYjBlZjYzOWNkOTQ2NCIsImFwcHJvdmFsX3JlcXVpcmVtZW50cyI6WyJkZXBsb3kiXSwiaWF0IjoxNzczODU2ODAwLCJleHAiOjE3NzM4NjA0MDB9.4v-w1cyVr8J-kaFLktCFvr9xVAKJNjn0TaaNknuzgMqnfA4IviJ1QkCKueNZ_CFLa-VGhyGfx5buVC6eRmK8Bg"
+}

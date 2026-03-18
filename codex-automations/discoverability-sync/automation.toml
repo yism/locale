@@ -1,0 +1,10 @@
+version = 1
+id = "discoverability-sync"
+name = "Discoverability Sync"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Keep README.md, docs/index.md, architecture docs, use-case pages, comparison pages, and any Codex-integration docs aligned with the current implementation, tests, transcripts, host profiles, and chronology in /Users/mchap/Projects/Locale. Make only the smallest compatible discoverability patch. If the docs would need to invent behavior or widen the product boundary, stop and report the mismatch instead of guessing."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=24"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

@@ -1,0 +1,15 @@
+{
+  "subject": {
+    "workload_id": "orchestrator.codex.local",
+    "tenant_id": "tenant_demo",
+    "mission_id": "mission_checkout_preview",
+    "environment": "prod"
+  },
+  "context": {
+    "repo_hash": "sha256:2d711642b726b04401627ca9fbac32f5da7e5c5f0f5d6d3f3d7d0f8f7c0c11aa",
+    "workspace_hash": "sha256:4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+  },
+  "requested_packs": [
+    "enterprise-strict"
+  ]
+}

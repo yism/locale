@@ -1,0 +1,10 @@
+version = 1
+id = "adoption-mapper"
+name = "Adoption Mapper"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Inspect the current spec and local reference repos under /Users/mchap/Projects/Locale/tmp/agent-protocol-repos/. Identify the smallest viable integration path for MCP-native orchestrators and IDE-hosted agents. Recommend reductions in protocol surface where possible. Classify the result as no change, compatible change, blocking change, or future watch. This is a report-first loop: do not patch if adoption would require execution brokerage, secret management, payment handling, or a public contract change."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=MO;BYHOUR=9;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

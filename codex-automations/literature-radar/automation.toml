@@ -1,0 +1,10 @@
+version = 1
+id = "literature-radar"
+name = "Literature Radar"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Read docs/change-pipeline.md and docs/automation-loop-plan.md in /Users/mchap/Projects/Locale. Then review fresh preprints and primary-source protocol material for capability delegation, offline verification, attestation, multi-agent tool governance, agent security, and host integration. Classify findings as no contract impact, threat-model impact, evaluation-model impact, or future watch. This is a report-first loop: do not modify the public contract unless there is a concrete flaw, a materially better delegation or verification primitive, or a clear host-adoption blocker."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=WE;BYHOUR=9;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

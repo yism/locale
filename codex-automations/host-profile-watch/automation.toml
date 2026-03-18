@@ -1,0 +1,10 @@
+version = 1
+id = "host-profile-watch"
+name = "Host Profile Watch"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Inspect the current MCP implementation and existing host profiles in /Users/mchap/Projects/Locale/docs/host-profiles/. Use local reference repos and official host documentation to identify one small additional host compatibility expectation at a time. Add or tighten only profile fixtures, black-box replay tests, transcripts, or adoption docs. Do not widen the public API. If a host would require new MCP tools, execution brokerage, secret management, or a wire-shape change, stop and file a blocking report instead."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=MO;BYHOUR=10;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

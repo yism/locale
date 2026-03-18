@@ -1,0 +1,10 @@
+version = 1
+id = "gh-ci-triage"
+name = "GH CI Triage"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md) with [$gh-fix-ci](/Users/mchap/.codex/skills/gh-fix-ci/SKILL.md). Inspect failing GitHub Actions checks for the current Locale branch or open PR, summarize the failing job, include the run URL and the smallest actionable fix direction, and stop. This automation is report-first: do not implement a code change, do not open a PR, and do not touch external CI providers beyond reporting their details URL."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=TU;BYHOUR=9;BYMINUTE=0"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]

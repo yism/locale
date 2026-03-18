@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "fuzz_ok": true,
+  "baseline_present": false,
+  "benchmark_ok": null,
+  "regressions": [],
+  "report_path": "/Users/mchap/Projects/Locale/tmp/asi/report.json"
+}

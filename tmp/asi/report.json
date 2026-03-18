@@ -1,0 +1,33 @@
+{
+  "at": "2026-03-18T21:06:02.207Z",
+  "seed": 1,
+  "params": {
+    "fuzz": 5000,
+    "bench": 50000,
+    "regress": 0.05
+  },
+  "fuzz": {
+    "ok": true,
+    "findings": []
+  },
+  "bench": {
+    "samples": [
+      {
+        "name": "evaluate.read_allow",
+        "iterations": 50000,
+        "elapsed_ms": 45.267291,
+        "ops_per_sec": 1104550.3032200446
+      },
+      {
+        "name": "evaluate.deploy_approval",
+        "iterations": 50000,
+        "elapsed_ms": 41.7225,
+        "ops_per_sec": 1198394.1518365392
+      }
+    ],
+    "metrics": {
+      "ops_per_sec_p50": 1198394.1518365392,
+      "ops_per_sec_p10": 1104550.3032200446
+    }
+  }
+}

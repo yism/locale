@@ -1,0 +1,14 @@
+{
+  "capability_token": "fixture:capabilities-get.response.json#capability_token",
+  "action": {
+    "protocol": "mcp",
+    "action_class": "read",
+    "target": "repo.read_file",
+    "input_hash": "sha256:ea36e4da4017000028db7794d946b152540d7c68bbdb6c60e999f1dce19a409b",
+    "resource_refs": [
+      "path_hash:sha256:4f3c7d363af1b01c201ef49507d54c48c0d34f26ef5ca8d4f1d8f1fc5b7f0f07"
+    ],
+    "idempotency_key": "idem_read_001",
+    "trace_id": "trace_read_001"
+  }
+}

@@ -1,0 +1,10 @@
+version = 1
+id = "chronology-guard"
+name = "Chronology Guard"
+prompt = "Use [$locale-maintain](/Users/mchap/Projects/Locale/codex-skills/locale-maintain/SKILL.md). Inspect docs/chronology/, docs/fixtures/, docs/transcripts/, docs/host-profiles/, tests/, and the current spec docs in /Users/mchap/Projects/Locale. Verify that all compatible public-surface changes are reflected across chronology, fixtures, transcripts, tests, and adoption docs together. If any one of those changed without the others, create the smallest compatible patch to restore alignment. If restoring alignment would require a protocol-version bump or a public contract change, stop and raise a blocking report."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=6"
+execution_environment = "worktree"
+model = "gpt-5.1-codex-mini"
+reasoning_effort = "medium"
+cwds = ["/Users/mchap/Projects/Locale"]
