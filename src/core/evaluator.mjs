@@ -1,16 +1,47 @@
 import { PROTOCOL_VERSION } from "../protocol/constants.mjs";
 import { createBudgetEffects, createDefaultBudgets, evaluateBudget } from "./budget-policy.mjs";
 import { buildDecisionRecord, buildDeniedDecision } from "./decision-record.mjs";
-import { composeBudgetOverrides, resolvePackSelection, resolvePolicyOutcome } from "./packs.mjs";
-import { parseActionDescriptor } from "./normalize.mjs";
+import { buildPolicySuggestion } from "./suggestion-engine.mjs";
+import { applyBudgetOverrides, composeBudgetOverrides, resolvePackSelection, resolvePolicyOutcome } from "./packs.mjs";
+import { hashNormalizedAction, parseActionDescriptor } from "./normalize.mjs";
 
-export function createEvaluator({ packStore, protocolVersion = PROTOCOL_VERSION } = {}) {
+export function createEvaluator({
+  packStore,
+  protocolVersion = PROTOCOL_VERSION,
+  evolutionStore = null,
+  clock = { now: () => new Date() },
+  suggestionTtlSeconds = 900
+} = {}) {
   if (!packStore) {
     throw new Error("createEvaluator requires a packStore");
   }
 
+  function currentOverlayPacks() {
+    return evolutionStore?.getEffectivePacks?.() || [];
+  }
+
+  function maybeRegisterSuggestion({ normalizedAction, decision, policy, budget }) {
+    if (!evolutionStore) {
+      return null;
+    }
+    const built = buildPolicySuggestion({
+      protocolVersion,
+      now: clock.now(),
+      ttlSeconds: suggestionTtlSeconds,
+      normalizedAction,
+      decision,
+      policy,
+      budget,
+      evolutionStore
+    });
+    if (!built) {
+      return null;
+    }
+    return evolutionStore.registerSuggestion(built.suggestionRecord);
+  }
+
   function issueBudgetMap({ requestedPacks, environment }) {
-    const selection = resolvePackSelection(packStore, requestedPacks);
+    const selection = resolvePackSelection(packStore, requestedPacks, currentOverlayPacks());
     const budgetOverrides = composeBudgetOverrides(selection.packs, environment);
     return {
       selection,
@@ -19,31 +50,57 @@ export function createEvaluator({ packStore, protocolVersion = PROTOCOL_VERSION 
   }
 
   function evaluateTokenAction({ tokenPayload, normalizedAction }) {
-    const selection = resolvePackSelection(packStore, tokenPayload.packs || []);
+    const overlayPacks = currentOverlayPacks();
+    const selection = resolvePackSelection(packStore, tokenPayload.packs || [], overlayPacks);
+    const budgetOverrides = composeBudgetOverrides(overlayPacks, tokenPayload.env);
+    const effectiveBudgets = applyBudgetOverrides(createDefaultBudgets(tokenPayload.bud || {}), budgetOverrides);
     const policy = resolvePolicyOutcome({
       packs: selection.packs,
       actionClass: normalizedAction.action_class,
-      environment: tokenPayload.env
+      environment: tokenPayload.env,
+      normalizedAction
     });
-    const bucket = evaluateBudget(normalizedAction.action_class, tokenPayload.bud || {});
+    const bucket = evaluateBudget(normalizedAction.action_class, effectiveBudgets);
 
     if (bucket.denied) {
-      return buildDeniedDecision({
+      const denied = buildDeniedDecision({
         code: "token.budget_exhausted",
         policyVersion: tokenPayload.pver || protocolVersion,
         policyPacks: selection.ids,
-        budgetEffects: createBudgetEffects(bucket.bucket, 0, bucket.remaining)
+        budgetEffects: createBudgetEffects(bucket.bucket, 0, bucket.remaining),
+        actionHash: hashNormalizedAction(normalizedAction)
       });
+      const suggestion = maybeRegisterSuggestion({
+        normalizedAction,
+        decision: denied,
+        policy,
+        budget: bucket
+      });
+      return suggestion ? {
+        ...denied,
+        policy_suggestion: suggestion
+      } : denied;
     }
 
     if ((normalizedAction.action_class === "read" || normalizedAction.action_class === "network")
       && !tokenPayload.cap?.includes(normalizedAction.action_class)) {
-      return buildDeniedDecision({
+      const denied = buildDeniedDecision({
         code: "token.scope_missing",
         policyVersion: tokenPayload.pver || protocolVersion,
         policyPacks: selection.ids,
-        budgetEffects: createBudgetEffects(bucket.bucket, 0, bucket.remaining)
+        budgetEffects: createBudgetEffects(bucket.bucket, 0, bucket.remaining),
+        actionHash: hashNormalizedAction(normalizedAction)
       });
+      const suggestion = maybeRegisterSuggestion({
+        normalizedAction,
+        decision: denied,
+        policy,
+        budget: bucket
+      });
+      return suggestion ? {
+        ...denied,
+        policy_suggestion: suggestion
+      } : denied;
     }
 
     const reasonCodes = [];
@@ -55,7 +112,7 @@ export function createEvaluator({ packStore, protocolVersion = PROTOCOL_VERSION 
       approvalRequirements.push(normalizedAction.action_class);
     }
 
-    return buildDecisionRecord({
+    const decision = buildDecisionRecord({
       normalizedAction,
       outcome: policy.outcome,
       reasonCodes,
@@ -68,6 +125,18 @@ export function createEvaluator({ packStore, protocolVersion = PROTOCOL_VERSION 
         bucket.remaining
       )
     });
+    const suggestion = (decision.outcome === "deny" || decision.outcome === "allow_with_approval")
+      ? maybeRegisterSuggestion({
+        normalizedAction,
+        decision,
+        policy,
+        budget: bucket
+      })
+      : null;
+    return suggestion ? {
+      ...decision,
+      policy_suggestion: suggestion
+    } : decision;
   }
 
   function preflightLocally(tokenPayload, normalizedAction) {

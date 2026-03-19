@@ -1,6 +1,8 @@
 import { signJws } from "../crypto/jws.mjs";
 import { PROTOCOL_VERSION } from "../protocol/constants.mjs";
+import { createEvolutionStore } from "./evolution-store.mjs";
 import { createEvaluator } from "./evaluator.mjs";
+import { createFederationBridge } from "./federation.mjs";
 import { verifyCapabilityToken } from "../verifier/index.mjs";
 import { buildDeniedDecision } from "./decision-record.mjs";
 import { createBudgetEffects } from "./budget-policy.mjs";
@@ -29,6 +31,10 @@ function validateAuthorityConfig(config) {
 
   if (!config.publishedJwks.keys.some((key) => key.kid === config.signingKey.kid)) {
     throw new Error("createAuthority requires publishedJwks to include the signing key kid");
+  }
+
+  if (config.federationProfile && typeof config.federationProfile.issuerDid !== "string") {
+    throw new Error("createAuthority federationProfile requires issuerDid");
   }
 }
 
@@ -84,10 +90,35 @@ function createPublishedKeysView(publishedJwks, policyPacks) {
 
 export function createAuthority(config) {
   validateAuthorityConfig(config);
+  const evolutionStore = config.evolutionStore || createEvolutionStore({
+    clock: config.clock,
+    policyStore: config.policyStore
+  });
   const evaluator = config.evaluator || createEvaluator({
     packStore: config.packStore,
-    protocolVersion: config.protocolVersion
+    protocolVersion: config.protocolVersion,
+    evolutionStore,
+    clock: config.clock,
+    suggestionTtlSeconds: config.suggestionTtlSeconds || 900
   });
+  const federationBridge = createFederationBridge({
+    federationProfile: config.federationProfile ? {
+      ...config.federationProfile,
+      decisionCredentialTtlSeconds: config.federationProfile.decisionCredentialTtlSeconds || config.tokenTtlSeconds
+    } : null,
+    publishedKeys: config.publishedJwks,
+    signingKey: config.signingKey,
+    clock: config.clock
+  });
+
+  function currentPolicyPackIds() {
+    return [
+      ...new Set([
+        ...evaluator.packStore.packs.map((pack) => pack.id),
+        ...evolutionStore.getEffectivePacks().map((pack) => pack.id)
+      ])
+    ];
+  }
 
   function issueCapability(request, issueOptions = {}) {
     const now = issueOptions.now ?? config.clock.now();
@@ -106,14 +137,19 @@ export function createAuthority(config) {
       ttlSeconds: config.tokenTtlSeconds
     });
     const exp = tokenPayload.exp;
+    const capabilityToken = issueSignedToken(tokenPayload, config.signingKey, "capability");
+    const federationAttestations = federationBridge
+      ? federationBridge.issueCapabilityAttestation(request, tokenPayload)
+      : null;
 
     return {
       token_format: "jws",
       authority_mode: config.mode || "runtime",
-      capability_token: issueSignedToken(tokenPayload, config.signingKey, "capability"),
+      capability_token: capabilityToken,
       expires_at: new Date(exp * 1000).toISOString(),
       effective_packs: budgetResult.selection.ids,
-      issuance_warnings: budgetResult.selection.warnings
+      issuance_warnings: budgetResult.selection.warnings,
+      ...(federationAttestations ? { federation_attestations: federationAttestations } : {})
     };
   }
 
@@ -173,6 +209,29 @@ export function createAuthority(config) {
       tokenPayload,
       normalizedAction: parsed.value
     });
+    const decisionToken = issueSignedToken(
+      buildDecisionTokenClaims({
+        issuer: config.issuer,
+        protocolVersion: config.protocolVersion,
+        decision: evaluated,
+        now: evaluationTime,
+        ttlSeconds: config.tokenTtlSeconds
+      }),
+      config.signingKey,
+      "decision"
+    );
+    const federationAttestations = federationBridge
+      ? federationBridge.issueDecisionAttestation(tokenPayload, evaluated)
+      : null;
+    if (config.evidenceLedger) {
+      config.evidenceLedger.appendEvaluation({
+        tokenPayload,
+        normalizedAction: parsed.value,
+        decision: evaluated,
+        suggestion: evaluated.policy_suggestion || null,
+        decisionToken
+      });
+    }
 
     return {
       outcome: evaluated.outcome,
@@ -183,22 +242,52 @@ export function createAuthority(config) {
       budget_effects: evaluated.budget_effects,
       approval_requirements: evaluated.approval_requirements,
       action_hash: evaluated.action_hash,
-      decision_token: issueSignedToken(
-        buildDecisionTokenClaims({
-          issuer: config.issuer,
-          protocolVersion: config.protocolVersion,
-          decision: evaluated,
-          now: evaluationTime,
-          ttlSeconds: config.tokenTtlSeconds
-        }),
-        config.signingKey,
-        "decision"
-      )
+      ...(evaluated.policy_suggestion ? { policy_suggestion: evaluated.policy_suggestion } : {}),
+      decision_token: decisionToken,
+      ...(federationAttestations ? { federation_attestations: federationAttestations } : {})
     };
   }
 
+  function evolvePolicy({ suggestionId, decision, persist = "session" }) {
+    return evolutionStore.applySuggestion({
+      suggestionId,
+      decision,
+      persist,
+      now: config.clock.now()
+    });
+  }
+
   function getPublishedKeys() {
-    return createPublishedKeysView(config.publishedJwks, evaluator.packStore.packs.map((pack) => pack.id));
+    const published = createPublishedKeysView(config.publishedJwks, currentPolicyPackIds());
+    if (!federationBridge) {
+      return published;
+    }
+    return {
+      ...published,
+      federation: federationBridge.keysView()
+    };
+  }
+
+  function recordResult(record) {
+    if (!config.evidenceLedger) {
+      return {
+        status: "disabled",
+        message: "No evidence ledger configured."
+      };
+    }
+    return config.evidenceLedger.recordResult(record);
+  }
+
+  function buildRollbackPlan(request) {
+    if (!config.evidenceLedger) {
+      return {
+        session_id: request?.sessionId || null,
+        trace_id: request?.traceId || null,
+        instructions: [],
+        artifacts: []
+      };
+    }
+    return config.evidenceLedger.buildRollbackPlan(request);
   }
 
   return {
@@ -209,8 +298,12 @@ export function createAuthority(config) {
       protocolVersion: config.protocolVersion
     }),
     evaluator,
+    evolutionStore,
     issueCapability,
     evaluateAction,
+    evolvePolicy,
+    recordResult,
+    buildRollbackPlan,
     getPublishedKeys
   };
 }

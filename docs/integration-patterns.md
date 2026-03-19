@@ -7,6 +7,7 @@
 3. verify the token locally
 4. locally preflight `read` and `network`
 5. call `policy.evaluate` for uncovered or approval-gated actions
+6. if the authority returns `policy_suggestion`, present it to the user and call `policy.evolve`
 
 ## Orchestrator pattern
 
@@ -21,7 +22,7 @@ See [examples/orchestrator-flow.mjs](../examples/orchestrator-flow.mjs).
 
 - use `createReferenceAuthority()` for deterministic examples, transcript replay, and local compatibility checks
 - use `createAuthority(config)` for embedded production hosts and services
-- keep the MCP tool names and request/response flow the same across both modes
+- keep the MCP tool names and request/response flow aligned across both modes
 
 ## Local and cloud parity
 

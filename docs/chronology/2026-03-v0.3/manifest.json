@@ -1,0 +1,204 @@
+{
+  "chronology_version": 1,
+  "protocol_version": "2026-03-v0.3",
+  "authority_surface": {
+    "mcp_tools": [
+      "capabilities.get",
+      "policy.evaluate",
+      "policy.evolve",
+      "keys.get"
+    ],
+    "token_format": [
+      "jws"
+    ],
+    "policy_packs": [
+      "baseline",
+      "ci-noninteractive",
+      "commerce-guarded",
+      "enterprise-strict",
+      "regulated-data"
+    ]
+  },
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/chronology-mismatch.md",
+      "sha256": "237cdc28fd96a2b9379989cecc367ccb6c71794b3e6c9d22ec3f1045722f9a70"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/docs-changelog-mismatch.md",
+      "sha256": "ee16367db6c430f86fb2b9a488a75909061da49cf7c21fe76783cbaeaf6e1a55"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/host-compatibility-regression.md",
+      "sha256": "2d91be5ff1670b4bf882691fdee85e08459920509da38c1c302279cd1ccaa912"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/research-pressure-signal.md",
+      "sha256": "914a821048a083d37a9aa183cb888289c270bfb21b380a9d7a683f1a3080c68a"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/transcript-drift.md",
+      "sha256": "58d688a41f7cefaac8e63f8aafe15340234c1286355d9820c0168c8cfe95c9a9"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "dbd5c0193e9b3be337c2ef37abcd69dea7315d3bb12b98cebc759622440e5560"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "f373395278b1b923250efee533cef075bd14a98433924093df4ff688a396b639"
+    },
+    {
+      "path": "docs/adoption-checklist.md",
+      "sha256": "0ea15ff61a2942b2e53174497287592033d41fc17e4d22a03e1e265ee4ff1b46"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "3ed7d9c1bca2b07798033a46dfb94f83bc270d49c12da196e243d79823cf7818"
+    },
+    {
+      "path": "docs/architecture.mmd",
+      "sha256": "e254fa219b49912b4632aa6a4c405b298bebe116c73af3feb2dc66259324ab68"
+    },
+    {
+      "path": "docs/capability-authority-v0.3.md",
+      "sha256": "7c02cd1da054ca6652d285a59ce92280ccc3d84b929b254f20ff8976e7954529"
+    },
+    {
+      "path": "docs/change-pipeline.md",
+      "sha256": "266c7166b96bd15ba3956a49990c2163f4207f07c40a4d087cbb63da5fe8a136"
+    },
+    {
+      "path": "docs/compare-and-decide.md",
+      "sha256": "166cf4efee25f03cafea71b980fe232cc89896e6181a0968ba4b55d4d71f3538"
+    },
+    {
+      "path": "docs/conformance-spec-v0.1.md",
+      "sha256": "aa3018d0390ef84881f4003a7bd8da0b481fdcee81d79234cb2db0836fd66e79"
+    },
+    {
+      "path": "docs/deploy-cloud.md",
+      "sha256": "d55d0d879130152a5c9e82a0ea1801c4d3bbbe4099782b7359ffc5c502ef7042"
+    },
+    {
+      "path": "docs/fixtures/capabilities-get.request.json",
+      "sha256": "752fcf80866dc7735797410d7c5dfc554e72bb8264889e877cc480159bd26586"
+    },
+    {
+      "path": "docs/fixtures/capabilities-get.response.json",
+      "sha256": "2e56cb874e0152fd62d8ad5f9ff1eb83ad22f6002c8eea898d323d9378933262"
+    },
+    {
+      "path": "docs/fixtures/keys-get.response.json",
+      "sha256": "d9a40edba8585ddaa203310c4125fd5a56d76daea15859984814c74ef063ddd3"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-deploy-approval.request.json",
+      "sha256": "f6cf681aa21405c938c2ab1f982a48f0d52a97558a2e929b0d8836f09534704e"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-deploy-approval.response.json",
+      "sha256": "0029356f5065f9a4d76c30a69900ae9c6e18de664df4964e847f6c07ec12a8c3"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-expired-token.response.json",
+      "sha256": "db19dcfde974e97012e81e6f195305a4ed26927ffe1086e99d36b36044ca2812"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-read-allow.request.json",
+      "sha256": "355f4ef5cc8dcbc507365311bf11c21eae81331ef0703faff7d7a177f7154ef8"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-read-allow.response.json",
+      "sha256": "40c62f3e0abe08902344bb1f79801529b357339079c87212644381e9fac892b6"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-scope-deny.request.json",
+      "sha256": "1f3d2f900b01e834ae4263f31d907aaff09332f617bebfea6b61e5c57903e7e7"
+    },
+    {
+      "path": "docs/fixtures/policy-evaluate-scope-deny.response.json",
+      "sha256": "82d9765a95c0a34a228f1a3d5c7808f3b5d526ea9363da48c59c8f9ad2d694b3"
+    },
+    {
+      "path": "docs/fixtures/policy-evolve-approve.request.json",
+      "sha256": "38f279fae58062ade7d7b5af522cced4dc6348297da125fe4962925a7a58991d"
+    },
+    {
+      "path": "docs/fixtures/policy-evolve-approve.response.json",
+      "sha256": "028cce978acab001bea2aef1c0526f66684c39e09c2e0e0c42b86e8d9e3b8a48"
+    },
+    {
+      "path": "docs/host-profiles/codex-mcp.json",
+      "sha256": "095d9d4147b90bc005ea5c609126f8d0dcc77b868a252d4e72c83db8d5c79852"
+    },
+    {
+      "path": "docs/index.md",
+      "sha256": "55e5cd3f11da9ab9ece24973e490d7f83b44f902003950ac9f43c7d8f2b2424c"
+    },
+    {
+      "path": "docs/integration-fast-path.md",
+      "sha256": "d5d49d338b34e8072c4442206cdaf968d139b0dd942a222468a0a92997785b17"
+    },
+    {
+      "path": "docs/integration-patterns.md",
+      "sha256": "97ff4dcb7ca4223265b850f414d17b4ed1aa35a8440f1053ade47ef514c590ad"
+    },
+    {
+      "path": "docs/migration-v0.3.md",
+      "sha256": "b5755fb804a074bbd22e01942b3b135ff5ed398fb2540de32900df8e755d6669"
+    },
+    {
+      "path": "docs/protocol-foundations.md",
+      "sha256": "f202175a00febd0253e0a10846e91d071d096ef273631654d181d4c6d9ed9c15"
+    },
+    {
+      "path": "docs/quickstart-local.md",
+      "sha256": "24acdb66081da56d13cf535a4f1b1ee53a23c6c0e3e5914ecf28d44c04a3b369"
+    },
+    {
+      "path": "docs/transcripts/capabilities.get.json",
+      "sha256": "286c7b4239a334bfa13ee737e8d78d7e6b7efa1738ab8518141985e747ea0f86"
+    },
+    {
+      "path": "docs/transcripts/keys.get.json",
+      "sha256": "cc422d54eb7b303c74c90f31f26ab83a87be82e0105d8252cd4185c70ace70f8"
+    },
+    {
+      "path": "docs/transcripts/policy.evaluate.json",
+      "sha256": "f063243f77b98c15290c48e05dfa4d65a2d6242adbf7a41b3cf74c5c2a23acd9"
+    },
+    {
+      "path": "docs/transcripts/policy.evolve.json",
+      "sha256": "49bee01d3f054d2b6ddb1a64852d46d86f2fd81672793f18e8cfcd8384eef20e"
+    },
+    {
+      "path": "docs/use-cases-mcp-builders.md",
+      "sha256": "78a7dab2697eb7753a04eb586f83a1912747f917299b2b46668c14d936c54cb9"
+    },
+    {
+      "path": "docs/verification-workflow.md",
+      "sha256": "6eaa6d52d6824b74080cc0f4ff3e8739bcb2b7ea72c81710a64968cf1d0e06b9"
+    },
+    {
+      "path": "packs/baseline.json",
+      "sha256": "ffe05e2e9054d95210246257697bb70a885c80da6c86484a135b57f757813469"
+    },
+    {
+      "path": "packs/ci-noninteractive.json",
+      "sha256": "81dd3c101b39b1aa9397eea7b62f11b3bec5a4e7c015568779a47517013520f9"
+    },
+    {
+      "path": "packs/commerce-guarded.json",
+      "sha256": "dae28115dfbe9166c302c773ec1673f694d0eb24e701d7c93718ed8f78898413"
+    },
+    {
+      "path": "packs/enterprise-strict.json",
+      "sha256": "b06387262bb0f3c5da42974278192f23736bb9f1acc4c63ffaaf99f06832ded5"
+    },
+    {
+      "path": "packs/regulated-data.json",
+      "sha256": "46725b3a4a16c72e11e1cf500b30c1f069b177cc9f7c921f20b7fef3c7c12861"
+    }
+  ]
+}

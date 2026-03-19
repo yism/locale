@@ -43,7 +43,7 @@ test("docs set includes quickstart, integration, and changelog", async () => {
   const quickstart = await read("docs/quickstart-local.md");
   const integration = await read("docs/integration-patterns.md");
   const changelog = await read("docs/changelog.md");
-  const migration = await read("docs/migration-v0.2.md");
+  const migration = await read("docs/migration-v0.3.md");
 
   assert.match(quickstart, /npx capability-policy-authority serve-stdio/);
   assert.match(integration, /capabilities.get/);
@@ -55,8 +55,8 @@ test("docs index links the primary adoption documents", async () => {
   const index = await read("docs/index.md");
 
   assert.match(index, /\[Architecture\]\(\.\/architecture\.md\)/);
-  assert.match(index, /\[Capability Authority v0\.2\]\(\.\/capability-authority-v0\.2\.md\)/);
-  assert.match(index, /\[Migration v0\.2\]\(\.\/migration-v0\.2\.md\)/);
+  assert.match(index, /\[Capability Authority v0\.3\]\(\.\/capability-authority-v0\.3\.md\)/);
+  assert.match(index, /\[Migration v0\.3\]\(\.\/migration-v0\.3\.md\)/);
   assert.match(index, /\[Local Quickstart\]\(\.\/quickstart-local\.md\)/);
   assert.match(index, /\[Cloud Deployment\]\(\.\/deploy-cloud\.md\)/);
   assert.match(index, /\[Integration Patterns\]\(\.\/integration-patterns\.md\)/);
@@ -69,6 +69,7 @@ test("architecture explainer references only the current MCP tools and hardening
 
   assert.match(architecture, /`capabilities\.get`/);
   assert.match(architecture, /`policy\.evaluate`/);
+  assert.match(architecture, /`policy\.evolve`/);
   assert.match(architecture, /`keys\.get`/);
   assert.doesNotMatch(architecture, /`resources\/list`/);
   assert.match(architecture, /docs\/transcripts/);
@@ -81,7 +82,7 @@ test("discoverability pages stay within the supported product boundary", async (
   const useCases = await read("docs/use-cases-mcp-builders.md");
   const compare = await read("docs/compare-and-decide.md");
   const fastPath = await read("docs/integration-fast-path.md");
-  const migration = await read("docs/migration-v0.2.md");
+  const migration = await read("docs/migration-v0.3.md");
 
   assert.match(useCases, /IDE preflight gate/);
   assert.match(useCases, /Orchestrator boundary layer/);

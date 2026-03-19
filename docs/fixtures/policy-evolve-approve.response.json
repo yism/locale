@@ -1,0 +1,24 @@
+{
+  "status": "applied",
+  "suggestion_id": "suggestion_77533bbd84436b1ad7c71180",
+  "persist": "session",
+  "applied_patch": {
+    "packs": [
+      {
+        "id": "session_suggestion_77533bbd84436b1ad7c71180",
+        "version": "2026-03-v0.3",
+        "priority": 1000,
+        "default_outcomes": {},
+        "budget_overrides": {},
+        "environment_overrides": {},
+        "scope_overrides": [
+          {
+            "action_class": "deploy",
+            "resource": "target:vercel.deploy",
+            "outcome": "allow"
+          }
+        ]
+      }
+    ]
+  }
+}

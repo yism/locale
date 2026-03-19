@@ -23,7 +23,7 @@
           "protocolVersion": "2025-06-18",
           "serverInfo": {
             "name": "capability-policy-authority",
-            "version": "2026-03-v0.2"
+            "version": "2026-03-v0.3"
           },
           "capabilities": {
             "tools": {
@@ -92,6 +92,36 @@
                   },
                   "action": {
                     "type": "object"
+                  }
+                }
+              }
+            },
+            {
+              "name": "policy.evolve",
+              "description": "Apply or reject a previously issued policy suggestion.",
+              "inputSchema": {
+                "type": "object",
+                "required": [
+                  "suggestion_id",
+                  "decision"
+                ],
+                "properties": {
+                  "suggestion_id": {
+                    "type": "string"
+                  },
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "approve",
+                      "reject"
+                    ]
+                  },
+                  "persist": {
+                    "type": "string",
+                    "enum": [
+                      "session",
+                      "policy_store"
+                    ]
                   }
                 }
               }

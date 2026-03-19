@@ -30,6 +30,25 @@ const TOOLS = Object.freeze([
     }
   },
   {
+    name: "policy.evolve",
+    description: "Apply or reject a previously issued policy suggestion.",
+    inputSchema: {
+      type: "object",
+      required: ["suggestion_id", "decision"],
+      properties: {
+        suggestion_id: { type: "string" },
+        decision: {
+          type: "string",
+          enum: ["approve", "reject"]
+        },
+        persist: {
+          type: "string",
+          enum: ["session", "policy_store"]
+        }
+      }
+    }
+  },
+  {
     name: "keys.get",
     description: "Return verification keys and current protocol metadata.",
     inputSchema: {
@@ -63,9 +82,23 @@ function validateKeysGetArgs(args) {
   return okResult(args || {});
 }
 
+function validatePolicyEvolveArgs(args) {
+  if (!args?.suggestion_id || !args?.decision) {
+    return errorResult("invalid_params", "suggestion_id and decision are required");
+  }
+  if (!["approve", "reject"].includes(args.decision)) {
+    return errorResult("invalid_params", "decision must be approve or reject");
+  }
+  if (args.persist && !["session", "policy_store"].includes(args.persist)) {
+    return errorResult("invalid_params", "persist must be session or policy_store");
+  }
+  return okResult(args);
+}
+
 const VALIDATORS = Object.freeze({
   "capabilities.get": validateCapabilitiesGetArgs,
   "policy.evaluate": validatePolicyEvaluateArgs,
+  "policy.evolve": validatePolicyEvolveArgs,
   "keys.get": validateKeysGetArgs
 });
 
@@ -102,9 +135,23 @@ export function invokeTool(authority, name, args, verifier) {
     });
   }
 
+  if (name === "policy.evolve") {
+    const evolved = authority.evolvePolicy({
+      suggestionId: validated.value.suggestion_id,
+      decision: validated.value.decision,
+      persist: validated.value.persist || "session"
+    });
+    if (evolved.status === "error") {
+      return evolved;
+    }
+    return okResult({
+      content: [],
+      structuredContent: evolved.value
+    });
+  }
+
   return okResult({
     content: [],
     structuredContent: authority.getPublishedKeys()
   });
 }
-

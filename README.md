@@ -3,7 +3,7 @@
 MCP-native capability and policy authority for evaluate-only agent preflight, verification, and attestation.
 
 [![tests](https://img.shields.io/badge/tests-green-2ea043)](#verification)
-[![protocol](https://img.shields.io/badge/protocol-2026--03--v0.2-0969da)](./docs/chronology/2026-03-v0.2/manifest.json)
+[![protocol](https://img.shields.io/badge/protocol-2026--03--v0.3-0969da)](./docs/chronology/2026-03-v0.3/manifest.json)
 [![transport](https://img.shields.io/badge/mcp-stdio%20and%20http-6f42c1)](./docs/verification-workflow.md)
 
 ## Why this exists
@@ -32,7 +32,8 @@ The core flow is:
 2. local offline verification
 3. local preflight for covered low-risk actions
 4. `policy.evaluate` for uncovered or approval-gated actions
-5. attach emitted artifacts to host-side logs or receipts
+5. if a suggestion is returned, ask the user and call `policy.evolve`
+6. attach emitted artifacts to host-side logs or receipts
 
 ## Who should use this
 
@@ -119,6 +120,7 @@ Example launcher:
 
 - `capabilities.get`
 - `policy.evaluate`
+- `policy.evolve`
 - `keys.get`
 
 Expected behavior in reference mode:
@@ -156,8 +158,8 @@ See [examples/orchestrator-flow.mjs](./examples/orchestrator-flow.mjs) for a com
 - docs index: [docs/index.md](./docs/index.md)
 - Codex skills: [docs/codex-skills.md](./docs/codex-skills.md)
 - architecture: [docs/architecture.md](./docs/architecture.md)
-- v0.2 product contract: [docs/capability-authority-v0.2.md](./docs/capability-authority-v0.2.md)
-- migration guide: [docs/migration-v0.2.md](./docs/migration-v0.2.md)
+- v0.3 product contract: [docs/capability-authority-v0.3.md](./docs/capability-authority-v0.3.md)
+- migration guide: [docs/migration-v0.3.md](./docs/migration-v0.3.md)
 - local quickstart: [docs/quickstart-local.md](./docs/quickstart-local.md)
 - cloud deployment: [docs/deploy-cloud.md](./docs/deploy-cloud.md)
 - integration patterns: [docs/integration-patterns.md](./docs/integration-patterns.md)

@@ -4,7 +4,7 @@
     "policy.approval_required"
   ],
   "message": "Action requires approval under effective policy.",
-  "policy_version": "2026-03-v0.2",
+  "policy_version": "2026-03-v0.3",
   "policy_packs": [
     "baseline",
     "enterprise-strict"
@@ -18,5 +18,38 @@
     "deploy"
   ],
   "action_hash": "sha256:0bb9242abb74431b6db3b0a992c63c48bf0945bf6950ea68fedb0ef639cd9464",
-  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4yIiwib3V0Y29tZSI6ImFsbG93X3dpdGhfYXBwcm92YWwiLCJwb2xpY3lfdmVyc2lvbiI6IjIwMjYtMDMtdjAuMiIsInBvbGljeV9wYWNrcyI6WyJiYXNlbGluZSIsImVudGVycHJpc2Utc3RyaWN0Il0sInJlYXNvbl9jb2RlcyI6WyJwb2xpY3kuYXBwcm92YWxfcmVxdWlyZWQiXSwiYWN0aW9uX2hhc2giOiJzaGEyNTY6MGJiOTI0MmFiYjc0NDMxYjZkYjNiMGE5OTJjNjNjNDhiZjA5NDViZjY5NTBlYTY4ZmVkYjBlZjYzOWNkOTQ2NCIsImFwcHJvdmFsX3JlcXVpcmVtZW50cyI6WyJkZXBsb3kiXSwiaWF0IjoxNzczODU2ODAwLCJleHAiOjE3NzM4NjA0MDB9.4v-w1cyVr8J-kaFLktCFvr9xVAKJNjn0TaaNknuzgMqnfA4IviJ1QkCKueNZ_CFLa-VGhyGfx5buVC6eRmK8Bg"
+  "policy_suggestion": {
+    "suggestion_id": "suggestion_77533bbd84436b1ad7c71180",
+    "kind": "approval_grant",
+    "reason_code": "policy.approval_required",
+    "human_readable_reason": "Allow deploy for target vercel.deploy in this session or widen policy for future runs.",
+    "minimal_delta": {
+      "session_patch": {
+        "packs": [
+          {
+            "id": "session_suggestion_77533bbd84436b1ad7c71180",
+            "version": "2026-03-v0.3",
+            "priority": 1000,
+            "default_outcomes": {},
+            "budget_overrides": {},
+            "environment_overrides": {},
+            "scope_overrides": [
+              {
+                "action_class": "deploy",
+                "resource": "target:vercel.deploy",
+                "outcome": "allow"
+              }
+            ]
+          }
+        ]
+      },
+      "policy_store_patch": null
+    },
+    "action_hash": "sha256:0bb9242abb74431b6db3b0a992c63c48bf0945bf6950ea68fedb0ef639cd9464",
+    "expires_at": "2026-03-18T18:15:00.000Z",
+    "persist_options": [
+      "session"
+    ]
+  },
+  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4zIiwib3V0Y29tZSI6ImFsbG93X3dpdGhfYXBwcm92YWwiLCJwb2xpY3lfdmVyc2lvbiI6IjIwMjYtMDMtdjAuMyIsInBvbGljeV9wYWNrcyI6WyJiYXNlbGluZSIsImVudGVycHJpc2Utc3RyaWN0Il0sInJlYXNvbl9jb2RlcyI6WyJwb2xpY3kuYXBwcm92YWxfcmVxdWlyZWQiXSwiYWN0aW9uX2hhc2giOiJzaGEyNTY6MGJiOTI0MmFiYjc0NDMxYjZkYjNiMGE5OTJjNjNjNDhiZjA5NDViZjY5NTBlYTY4ZmVkYjBlZjYzOWNkOTQ2NCIsImFwcHJvdmFsX3JlcXVpcmVtZW50cyI6WyJkZXBsb3kiXSwiaWF0IjoxNzczODU2ODAwLCJleHAiOjE3NzM4NjA0MDB9.KBBpLIoqIGVsuEtnt1Kyls2bqQjiWqqpbSqZzBRfGy09DPEDhh0C9g1NSAQWM3kt_D9pmWmjVNX7ugCUPRFcDg"
 }

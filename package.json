@@ -1,6 +1,6 @@
 {
   "name": "capability-policy-authority",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "MCP-native capability and policy authority for evaluate-only agent preflight, verification, and attestation.",
   "private": false,
   "type": "module",

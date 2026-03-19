@@ -6,6 +6,18 @@
     "network": "allow_with_warning"
   },
   "budget_overrides": {},
+  "scope_overrides": [
+    {
+      "action_class": "read",
+      "resource": "path:/etc/*",
+      "outcome": "deny"
+    },
+    {
+      "action_class": "network",
+      "resource": "host:internal.*",
+      "outcome": "deny"
+    }
+  ],
   "environment_overrides": {
     "prod": {
       "default_outcomes": {

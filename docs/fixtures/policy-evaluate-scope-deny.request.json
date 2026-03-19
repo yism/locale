@@ -1,0 +1,13 @@
+{
+  "action": {
+    "protocol": "mcp",
+    "action_class": "read",
+    "target": "repo.read_file",
+    "input_hash": "sha256:scope-deny",
+    "resource_refs": [
+      "path:/etc/config"
+    ],
+    "idempotency_key": "idem_scope_deny_001",
+    "trace_id": "trace_scope_deny_001"
+  }
+}

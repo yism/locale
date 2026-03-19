@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-03-v0.2
+## 2026-03-v0.3
 
 ### Release summary
 
@@ -8,11 +8,11 @@
 - Boundary: evaluate-only agent preflight with offline verification and attestation
 - Hardening sources: host profiles, transcripts, chronology, and compatibility tests
 
-- Protocol version: `2026-03-v0.2`
-- MCP tools: `capabilities.get`, `policy.evaluate`, `keys.get`
+- Protocol version: `2026-03-v0.3`
+- MCP tools: `capabilities.get`, `policy.evaluate`, `policy.evolve`, `keys.get`
 - Token formats: `jws`
 - Policy packs: `baseline`, `ci-noninteractive`, `commerce-guarded`, `enterprise-strict`, `regulated-data`
-- Chronology manifest: [docs/chronology/2026-03-v0.2/manifest.json](./chronology/2026-03-v0.2/manifest.json)
+- Chronology manifest: [docs/chronology/2026-03-v0.3/manifest.json](./chronology/2026-03-v0.3/manifest.json)
 
 ### Artifact coverage
 
@@ -26,7 +26,7 @@
 - `docs/adoption-checklist.md`
 - `docs/architecture.md`
 - `docs/architecture.mmd`
-- `docs/capability-authority-v0.2.md`
+- `docs/capability-authority-v0.3.md`
 - `docs/change-pipeline.md`
 - `docs/compare-and-decide.md`
 - `docs/conformance-spec-v0.1.md`
@@ -39,16 +39,21 @@
 - `docs/fixtures/policy-evaluate-expired-token.response.json`
 - `docs/fixtures/policy-evaluate-read-allow.request.json`
 - `docs/fixtures/policy-evaluate-read-allow.response.json`
+- `docs/fixtures/policy-evaluate-scope-deny.request.json`
+- `docs/fixtures/policy-evaluate-scope-deny.response.json`
+- `docs/fixtures/policy-evolve-approve.request.json`
+- `docs/fixtures/policy-evolve-approve.response.json`
 - `docs/host-profiles/codex-mcp.json`
 - `docs/index.md`
 - `docs/integration-fast-path.md`
 - `docs/integration-patterns.md`
-- `docs/migration-v0.2.md`
+- `docs/migration-v0.3.md`
 - `docs/protocol-foundations.md`
 - `docs/quickstart-local.md`
 - `docs/transcripts/capabilities.get.json`
 - `docs/transcripts/keys.get.json`
 - `docs/transcripts/policy.evaluate.json`
+- `docs/transcripts/policy.evolve.json`
 - `docs/use-cases-mcp-builders.md`
 - `docs/verification-workflow.md`
 - `packs/baseline.json`

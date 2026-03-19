@@ -39,6 +39,7 @@ Use a stdio launcher like:
 
 - `capabilities.get`
 - `policy.evaluate`
+- `policy.evolve`
 - `keys.get`
 
 ## What you should see
@@ -46,7 +47,7 @@ Use a stdio launcher like:
 - capability tokens issued as compact JWS
 - offline-verifiable keys
 - `read` actions allowed under baseline when covered
-- `deploy` actions returned as `allow_with_approval`
+- `deploy` actions returned as `allow_with_approval` plus a structured suggestion
 
 ## Runtime embedding
 
@@ -77,6 +78,6 @@ npm test
 ## Reference materials
 
 - [README.md](../README.md)
-- [Migration v0.2](./migration-v0.2.md)
+- [Migration v0.3](./migration-v0.3.md)
 - [docs/integration-patterns.md](./integration-patterns.md)
 - [docs/verification-workflow.md](./verification-workflow.md)

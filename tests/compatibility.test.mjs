@@ -20,6 +20,14 @@ async function readHostProfile(name) {
   return JSON.parse(await fs.readFile(path.join(hostProfileDir, name), "utf8"));
 }
 
+function transcriptResponseForRequestId(transcript, id) {
+  const exchange = transcript.find((entry) => entry.request.id === id);
+  if (!exchange) {
+    throw new Error(`Missing transcript exchange ${id}`);
+  }
+  return exchange.response;
+}
+
 function encodeFrame(message) {
   const body = Buffer.from(JSON.stringify(message), "utf8");
   return Buffer.concat([
@@ -121,26 +129,27 @@ test("black-box stdio replay matches golden MCP transcripts", async () => {
   const transcriptFiles = [
     "capabilities.get.json",
     "policy.evaluate.json",
+    "policy.evolve.json",
     "keys.get.json"
   ];
 
-  await withStdioServer(async (child) => {
-    for (const transcriptFile of transcriptFiles) {
+  for (const transcriptFile of transcriptFiles) {
+    await withStdioServer(async (child) => {
       const transcript = await readTranscript(transcriptFile);
       for (const exchange of transcript) {
         const response = await sendFramedRequest(child, exchange.request);
         assert.deepEqual(response, exchange.response);
       }
-    }
-  });
+    });
+  }
 });
 
 test("external verifier process accepts transcript-issued capability and decision tokens", async () => {
   const capabilitiesTranscript = await readTranscript("capabilities.get.json");
   const policyTranscript = await readTranscript("policy.evaluate.json");
 
-  const capabilityToken = capabilitiesTranscript[2].response.result.structuredContent.capability_token;
-  const decisionToken = policyTranscript[2].response.result.structuredContent.decision_token;
+  const capabilityToken = transcriptResponseForRequestId(capabilitiesTranscript, "capabilities-call").result.structuredContent.capability_token;
+  const decisionToken = transcriptResponseForRequestId(policyTranscript, "policy-call").result.structuredContent.decision_token;
 
   const capabilityVerification = await runCli("verify-capability", {
     token: capabilityToken,
@@ -159,7 +168,7 @@ test("external verifier process accepts transcript-issued capability and decisio
 
 test("external verifier process rejects expired capability tokens from transcript payloads", async () => {
   const capabilitiesTranscript = await readTranscript("capabilities.get.json");
-  const capabilityToken = capabilitiesTranscript[2].response.result.structuredContent.capability_token;
+  const capabilityToken = transcriptResponseForRequestId(capabilitiesTranscript, "capabilities-call").result.structuredContent.capability_token;
 
   const expiredVerification = await runCli("verify-capability", {
     token: capabilityToken,

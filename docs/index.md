@@ -4,8 +4,8 @@
 
 - [Architecture](./architecture.md)
 - [Codex Skills](./codex-skills.md)
-- [Capability Authority v0.2](./capability-authority-v0.2.md)
-- [Migration v0.2](./migration-v0.2.md)
+- [Capability Authority v0.3](./capability-authority-v0.3.md)
+- [Migration v0.3](./migration-v0.3.md)
 - [Local Quickstart](./quickstart-local.md)
 - [Cloud Deployment](./deploy-cloud.md)
 - [Integration Patterns](./integration-patterns.md)

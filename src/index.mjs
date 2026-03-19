@@ -1,6 +1,9 @@
 export { createAuthority } from "./core/authority.mjs";
 export { createReferenceAuthority, createReferenceKeys } from "./reference-runtime.mjs";
 export { createEvaluator } from "./core/evaluator.mjs";
+export { createEvolutionStore } from "./core/evolution-store.mjs";
+export { createEvidenceLedger } from "./core/evidence-ledger.mjs";
+export { createFilePolicyStore } from "./core/file-policy-store.mjs";
 export { PROTOCOL_VERSION } from "./protocol/constants.mjs";
 export { parseActionDescriptor, normalizeActionDescriptor, hashNormalizedAction } from "./core/normalize.mjs";
 export { loadPackDirectory, resolvePackSelection } from "./core/packs.mjs";

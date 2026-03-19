@@ -30,6 +30,17 @@ async function main() {
     return;
   }
 
+  if (command === "evolve" && path) {
+    const request = await readJson(path);
+    const result = authority.evolvePolicy({
+      suggestionId: request.suggestion_id,
+      decision: request.decision,
+      persist: request.persist || "session"
+    });
+    console.log(JSON.stringify(result.status === "ok" ? result.value : result, null, 2));
+    return;
+  }
+
   if (command === "keys") {
     console.log(JSON.stringify(authority.getPublishedKeys(), null, 2));
     return;
@@ -59,7 +70,7 @@ async function main() {
     return;
   }
 
-  console.error("Usage: node src/cli.mjs <issue|evaluate|keys|verify-capability|verify-decision|serve-stdio|serve-http> [json-file|port]");
+  console.error("Usage: node src/cli.mjs <issue|evaluate|evolve|keys|verify-capability|verify-decision|serve-stdio|serve-http> [json-file|port]");
   process.exitCode = 1;
 }
 

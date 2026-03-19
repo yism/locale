@@ -1,0 +1,53 @@
+{
+  "outcome": "deny",
+  "reason_codes": [
+    "policy.pack_denied"
+  ],
+  "message": "Action is denied by an effective policy pack.",
+  "policy_version": "2026-03-v0.3",
+  "policy_packs": [
+    "baseline",
+    "enterprise-strict"
+  ],
+  "budget_effects": {
+    "rate_bucket": "read_per_minute",
+    "units_consumed": 0,
+    "remaining_estimate": 199
+  },
+  "approval_requirements": [],
+  "action_hash": "sha256:cce648a3534cb277fcfc08e508d1604241b729d7280d742087971c845ea94b61",
+  "policy_suggestion": {
+    "suggestion_id": "suggestion_db7693d39dd6d4e30942bfa9",
+    "kind": "scope_grant",
+    "reason_code": "policy.pack_denied",
+    "human_readable_reason": "Allow read access to path:/etc/config.",
+    "minimal_delta": {
+      "session_patch": {
+        "packs": [
+          {
+            "id": "session_suggestion_db7693d39dd6d4e30942bfa9",
+            "version": "2026-03-v0.3",
+            "priority": 1000,
+            "default_outcomes": {},
+            "budget_overrides": {},
+            "environment_overrides": {},
+            "scope_overrides": [
+              {
+                "action_class": "read",
+                "resource": "path:/etc/config",
+                "outcome": "allow"
+              }
+            ]
+          }
+        ]
+      },
+      "policy_store_patch": null
+    },
+    "action_hash": "sha256:cce648a3534cb277fcfc08e508d1604241b729d7280d742087971c845ea94b61",
+    "expires_at": "2026-03-18T18:15:00.000Z",
+    "persist_options": [
+      "session"
+    ]
+  },
+  "decision_token": "eyJhbGciOiJFZERTQSIsImtpZCI6ImtpZF8yMDI2XzAzIiwidHlwIjoiZGVjaXNpb24ifQ.eyJpc3MiOiJjcGEucmVmZXJlbmNlIiwidHlwIjoiZGVjaXNpb24iLCJwdmVyIjoiMjAyNi0wMy12MC4zIiwib3V0Y29tZSI6ImRlbnkiLCJwb2xpY3lfdmVyc2lvbiI6IjIwMjYtMDMtdjAuMyIsInBvbGljeV9wYWNrcyI6WyJiYXNlbGluZSIsImVudGVycHJpc2Utc3RyaWN0Il0sInJlYXNvbl9jb2RlcyI6WyJwb2xpY3kucGFja19kZW5pZWQiXSwiYWN0aW9uX2hhc2giOiJzaGEyNTY6Y2NlNjQ4YTM1MzRjYjI3N2ZjZmMwOGU1MDhkMTYwNDI0MWI3MjlkNzI4MGQ3NDIwODc5NzFjODQ1ZWE5NGI2MSIsImFwcHJvdmFsX3JlcXVpcmVtZW50cyI6W10sImlhdCI6MTc3Mzg1NjgwMCwiZXhwIjoxNzczODYwNDAwfQ.MnU1__ut5TdHtvZ9PDKTGUoWOf-0RcjSpM7hveLYehlv_xeoW2GCqXE8ignulmMQYLdW6DChdiIIFdXhMfMLBA"
+}

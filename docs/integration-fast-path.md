@@ -37,12 +37,13 @@ Before shipping an integration:
 1. replay the generated transcripts
 2. validate the named host profile
 3. verify emitted capability and decision tokens offline
+4. confirm `policy.evolve` works for a representative approval-gated flow
 
 ## Constructor boundary
 
 Use the packaged CLI for deterministic reference-mode integration checks.
 
-For production embedding, construct the authority explicitly with `createAuthority(config)` and keep the MCP tool contract unchanged.
+For production embedding, construct the authority explicitly with `createAuthority(config)` and keep the v0.3 MCP tool contract intact.
 
 ## Truth-backed references
 

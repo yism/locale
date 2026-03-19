@@ -1,5 +1,5 @@
 {
-  "protocol_version": "2026-03-v0.2",
+  "protocol_version": "2026-03-v0.3",
   "supported_token_formats": [
     "jws"
   ],

@@ -6,6 +6,7 @@ This repository exposes a thin, evaluate-only MCP-native layer:
 
 - `capabilities.get`
 - `policy.evaluate`
+- `policy.evolve`
 - `keys.get`
 
 It exists to let an MCP host or orchestrator:
@@ -14,7 +15,8 @@ It exists to let an MCP host or orchestrator:
 2. verify it locally
 3. locally preflight covered low-risk actions
 4. remotely evaluate uncovered or approval-gated actions
-5. attach decision artifacts to its own logs, traces, or receipts
+5. optionally evolve session or durable policy after explicit user approval
+6. attach decision artifacts to its own logs, traces, or receipts
 
 In v0.2 the runtime is explicit:
 
@@ -30,15 +32,17 @@ flowchart LR
     H2["Verify token locally"]
     H3["Preflight low-risk action"]
     H4["Call remote policy evaluate"]
-    H5["Attach decision artifacts to logs"]
+    H5["Approve suggestion and call policy evolve"]
+    H6["Attach decision artifacts to logs"]
   end
 
   subgraph Authority["Capability Policy Authority"]
     A1["capabilities.get"]
     A2["policy.evaluate"]
-    A3["keys.get"]
-    A4["Policy packs"]
-    A5["JWS signing and verification keys"]
+    A3["policy.evolve"]
+    A4["keys.get"]
+    A5["Policy packs"]
+    A6["JWS signing and verification keys"]
   end
 
   subgraph Hardening["Hardening and Immutability"]
@@ -50,14 +54,16 @@ flowchart LR
   end
 
   H1 --> A1
-  H2 --> A3
-  H3 --> H5
+  H2 --> A4
+  H3 --> H6
   H4 --> A2
-  A1 --> A4
-  A2 --> A4
+  H5 --> A3
   A1 --> A5
   A2 --> A5
   A3 --> A5
+  A1 --> A6
+  A2 --> A6
+  A4 --> A6
   D1 --> D5
   D2 --> D5
   D3 --> D4
@@ -65,9 +71,11 @@ flowchart LR
   A1 --> D1
   A2 --> D1
   A3 --> D1
+  A4 --> D1
   A1 --> D3
   A2 --> D3
   A3 --> D3
+  A4 --> D3
 ```
 
 Source: [architecture.mmd](./architecture.mmd)
@@ -75,8 +83,9 @@ Source: [architecture.mmd](./architecture.mmd)
 ## How it works
 
 - `capabilities.get` issues a short-lived capability token for an orchestrator mission context.
-- `keys.get` publishes offline verification material.
 - `policy.evaluate` returns a deterministic policy result for a normalized action descriptor.
+- `policy.evolve` applies or rejects a previously issued suggestion.
+- `keys.get` publishes offline verification material.
 - authority construction is explicit in runtime mode and deterministic in reference mode
 - transport lifecycle is modeled as a session state machine instead of informal booleans
 

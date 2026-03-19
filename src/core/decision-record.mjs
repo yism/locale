@@ -9,7 +9,8 @@ export function buildDecisionRecord({
   policyVersion,
   policyPacks,
   budgetEffects,
-  approvalRequirements = []
+  approvalRequirements = [],
+  policySuggestion = null
 }) {
   return {
     action_hash: normalizedAction ? hashNormalizedAction(normalizedAction) : "sha256:unbound",
@@ -19,7 +20,8 @@ export function buildDecisionRecord({
     policy_version: policyVersion,
     policy_packs: policyPacks,
     budget_effects: budgetEffects || createBudgetEffects(null, 0, null),
-    approval_requirements: approvalRequirements
+    approval_requirements: approvalRequirements,
+    ...(policySuggestion ? { policy_suggestion: policySuggestion } : {})
   };
 }
 
@@ -28,7 +30,8 @@ export function buildDeniedDecision({
   policyVersion,
   policyPacks,
   budgetEffects,
-  actionHash = "sha256:unbound"
+  actionHash = "sha256:unbound",
+  policySuggestion = null
 }) {
   return {
     action_hash: actionHash,
@@ -38,7 +41,7 @@ export function buildDeniedDecision({
     policy_version: policyVersion,
     policy_packs: policyPacks,
     budget_effects: budgetEffects || createBudgetEffects(null, 0, null),
-    approval_requirements: []
+    approval_requirements: [],
+    ...(policySuggestion ? { policy_suggestion: policySuggestion } : {})
   };
 }
-
