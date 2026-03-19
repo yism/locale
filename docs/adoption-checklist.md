@@ -2,7 +2,7 @@
 
 ## Issuer Requirements
 
-- expose exactly three MCP tools: `capabilities.get`, `policy.evaluate`, `keys.get`
+- expose exactly four MCP tools: `capabilities.get`, `policy.evaluate`, `policy.evolve`, `keys.get`
 - support MCP `initialize`, `tools/list`, and `tools/call`
 - issue JWS capability tokens with required claims only
 - publish verification keys with stable `kid` values

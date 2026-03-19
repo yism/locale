@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and implementation help
+    url: https://github.com/yism/locale/discussions
+    about: Use GitHub Discussions for integration questions, architecture questions, and adoption help.
+  - name: Security vulnerability report
+    url: https://github.com/yism/locale/security/advisories/new
+    about: Please report security issues privately rather than opening a public issue.

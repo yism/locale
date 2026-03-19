@@ -15,9 +15,11 @@ test("package metadata exposes a public CLI entrypoint", async () => {
   const packageJson = JSON.parse(await read("package.json"));
 
   assert.equal(packageJson.name, "capability-policy-authority");
+  assert.equal(packageJson.license, "Apache-2.0");
   assert.equal(packageJson.bin["capability-policy-authority"], "./src/cli.mjs");
   assert.ok(packageJson.keywords.includes("mcp"));
   assert.ok(packageJson.keywords.includes("capability"));
+  assert.ok(packageJson.keywords.includes("agent-policy"));
 });
 
 test("README exposes the canonical one-line commands", async () => {
@@ -25,7 +27,8 @@ test("README exposes the canonical one-line commands", async () => {
 
   assert.match(readme, /npx capability-policy-authority serve-stdio/);
   assert.match(readme, /npx capability-policy-authority serve-http 8080/);
-  assert.match(readme, /MCP-native capability and policy authority/);
+  assert.match(readme, /Agent policy layer for safe tool use/);
+  assert.match(readme, /Locale is the project brand/);
   assert.match(readme, /\[docs\/architecture\.md\]/);
   assert.match(readme, /\[docs\/index\.md\]/);
 });
@@ -44,11 +47,16 @@ test("docs set includes quickstart, integration, and changelog", async () => {
   const integration = await read("docs/integration-patterns.md");
   const changelog = await read("docs/changelog.md");
   const migration = await read("docs/migration-v0.3.md");
+  const enterprise = await read("docs/enterprise-online.md");
+  const adoption = await read("docs/adoption-checklist.md");
 
   assert.match(quickstart, /npx capability-policy-authority serve-stdio/);
   assert.match(integration, /capabilities.get/);
   assert.match(changelog, /# Changelog/);
   assert.match(migration, /createReferenceAuthority/);
+  assert.match(enterprise, /embedded backend component/);
+  assert.match(enterprise, /examples\/enterprise-http-service\.mjs/);
+  assert.match(adoption, /exactly four MCP tools/);
 });
 
 test("docs index links the primary adoption documents", async () => {
@@ -59,6 +67,7 @@ test("docs index links the primary adoption documents", async () => {
   assert.match(index, /\[Migration v0\.3\]\(\.\/migration-v0\.3\.md\)/);
   assert.match(index, /\[Local Quickstart\]\(\.\/quickstart-local\.md\)/);
   assert.match(index, /\[Cloud Deployment\]\(\.\/deploy-cloud\.md\)/);
+  assert.match(index, /\[Enterprise Online Deployment\]\(\.\/enterprise-online\.md\)/);
   assert.match(index, /\[Integration Patterns\]\(\.\/integration-patterns\.md\)/);
   assert.match(index, /\[Verification Workflow\]\(\.\/verification-workflow\.md\)/);
   assert.match(index, /\[Changelog\]\(\.\/changelog\.md\)/);
@@ -83,6 +92,7 @@ test("discoverability pages stay within the supported product boundary", async (
   const compare = await read("docs/compare-and-decide.md");
   const fastPath = await read("docs/integration-fast-path.md");
   const migration = await read("docs/migration-v0.3.md");
+  const deploy = await read("docs/deploy-cloud.md");
 
   assert.match(useCases, /IDE preflight gate/);
   assert.match(useCases, /Orchestrator boundary layer/);
@@ -95,8 +105,10 @@ test("discoverability pages stay within the supported product boundary", async (
   assert.match(compare, /payment handling/);
   assert.match(fastPath, /serve-stdio/);
   assert.match(fastPath, /serve-http 8080/);
+  assert.match(fastPath, /reference runtime/);
   assert.match(fastPath, /Host Profiles/);
   assert.match(migration, /createAuthority\(config\)/);
+  assert.match(deploy, /production-oriented bootstrap example/);
 });
 
 test("contribution templates enforce chronology-first intake", async () => {
@@ -118,6 +130,24 @@ test("contribution templates enforce chronology-first intake", async () => {
   assert.match(docsTemplate, /Affected public docs/);
   assert.match(transcriptTemplate, /Expected transcript or response/);
   assert.match(signalTemplate, /Signal type/);
+});
+
+test("public launch files are present for open-source intake", async () => {
+  const license = await read("LICENSE");
+  const notice = await read("NOTICE");
+  const conduct = await read("CODE_OF_CONDUCT.md");
+  const security = await read("SECURITY.md");
+  const support = await read("SUPPORT.md");
+  const funding = await read(".github/FUNDING.yml");
+  const issueConfig = await read(".github/ISSUE_TEMPLATE/config.yml");
+
+  assert.match(license, /Apache License/);
+  assert.match(notice, /Locale contributors/);
+  assert.match(conduct, /Contributor Covenant/);
+  assert.match(security, /Security Policy/);
+  assert.match(support, /GitHub Discussions/);
+  assert.match(funding, /github:/);
+  assert.match(issueConfig, /contact_links:/);
 });
 
 test("changelog references the current chronology version", async () => {

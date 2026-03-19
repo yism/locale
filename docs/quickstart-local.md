@@ -61,6 +61,8 @@ For production use, embed the library and construct `createAuthority(config)` ex
 - token TTL
 - protocol version
 
+For enterprise network-wide deployment guidance, see [docs/enterprise-online.md](./enterprise-online.md) and [examples/enterprise-http-service.mjs](../examples/enterprise-http-service.mjs).
+
 ## Local verification
 
 Refresh artifacts:

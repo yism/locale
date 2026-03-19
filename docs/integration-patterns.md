@@ -40,6 +40,8 @@ npx capability-policy-authority serve-stdio
 npx capability-policy-authority serve-http 8080
 ```
 
+The packaged HTTP server is reference-mode. For enterprise traffic, embed `createAuthority(config)` plus `createHttpHandler()` in your existing service boundary.
+
 ## Transcript replay pattern
 
 Use generated transcripts and host profiles as the minimum compatibility gate:

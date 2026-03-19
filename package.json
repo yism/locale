@@ -1,10 +1,10 @@
 {
   "name": "capability-policy-authority",
   "version": "0.3.0",
-  "description": "MCP-native capability and policy authority for evaluate-only agent preflight, verification, and attestation.",
+  "description": "Agent policy layer for safe tool use across MCP, A2A, and orchestrated agents.",
   "private": false,
   "type": "module",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bin": {
     "capability-policy-authority": "./src/cli.mjs"
   },
@@ -20,14 +20,31 @@
   },
   "keywords": [
     "mcp",
+    "a2a",
     "model-context-protocol",
     "agent",
+    "agent-security",
+    "agent-governance",
+    "agent-policy",
     "policy",
+    "policy-engine",
     "capability",
+    "capability-tokens",
     "verification",
     "attestation",
+    "orchestrator",
+    "ai-infrastructure",
     "security"
   ],
+  "funding": "https://github.com/sponsors/yism",
+  "homepage": "https://github.com/yism/locale",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yism/locale.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yism/locale/issues"
+  },
   "exports": {
     ".": "./src/index.mjs",
     "./reference": "./src/reference-authority.mjs",

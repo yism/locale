@@ -46,11 +46,11 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "f373395278b1b923250efee533cef075bd14a98433924093df4ff688a396b639"
+      "sha256": "0d0c47724c023ab1cfd1cfa95dad3c1b349276df15b55394240fea740d178fe0"
     },
     {
       "path": "docs/adoption-checklist.md",
-      "sha256": "0ea15ff61a2942b2e53174497287592033d41fc17e4d22a03e1e265ee4ff1b46"
+      "sha256": "d8a973651bab65b9231763a29a72df50ee94afcb610a181d96d54f54d4853df0"
     },
     {
       "path": "docs/architecture.md",
@@ -78,7 +78,7 @@
     },
     {
       "path": "docs/deploy-cloud.md",
-      "sha256": "d55d0d879130152a5c9e82a0ea1801c4d3bbbe4099782b7359ffc5c502ef7042"
+      "sha256": "98e8bab52ded0d94d4fe8d86da5e24d45774070c8229529d4e0d2ede9e6139dd"
     },
     {
       "path": "docs/fixtures/capabilities-get.request.json",
@@ -134,15 +134,15 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "55e5cd3f11da9ab9ece24973e490d7f83b44f902003950ac9f43c7d8f2b2424c"
+      "sha256": "d4f2b058b0efb647060450bf2c4e5d8a48c837213772885a79a6a75920fdc150"
     },
     {
       "path": "docs/integration-fast-path.md",
-      "sha256": "d5d49d338b34e8072c4442206cdaf968d139b0dd942a222468a0a92997785b17"
+      "sha256": "4e422623703b3c7f9d88ca6ed593d82705e217546ceddbaa0e011b4bdfcedde9"
     },
     {
       "path": "docs/integration-patterns.md",
-      "sha256": "97ff4dcb7ca4223265b850f414d17b4ed1aa35a8440f1053ade47ef514c590ad"
+      "sha256": "2a3c78c66c902c0639b25e11ca2f9149f6d617da7d7f595d5530124edb416d04"
     },
     {
       "path": "docs/migration-v0.3.md",
@@ -154,7 +154,7 @@
     },
     {
       "path": "docs/quickstart-local.md",
-      "sha256": "24acdb66081da56d13cf535a4f1b1ee53a23c6c0e3e5914ecf28d44c04a3b369"
+      "sha256": "91dd12f0799166b7f4c4ef54c47093d75fb009e95bc6b3459aaf3989752cea0c"
     },
     {
       "path": "docs/transcripts/capabilities.get.json",

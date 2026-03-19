@@ -4,7 +4,7 @@
 
 Deploy the same evaluate-only MCP surface in a containerized environment while keeping reference and runtime behavior distinct.
 
-## HTTP mode
+## Reference HTTP mode
 
 Run the packaged reference server in HTTP mode:
 
@@ -16,6 +16,8 @@ Endpoints:
 
 - `POST /mcp`
 - `GET /health`
+
+This is useful for local compatibility checks, transcript replay, and containerized demos. It is not the recommended enterprise runtime path.
 
 ## Docker quickstart
 
@@ -56,6 +58,19 @@ For enterprise deployment, prefer embedding `createAuthority(config)` and `creat
 - source-controlled pack store
 - explicit token TTL and protocol version
 
+The repo includes a production-oriented bootstrap example at [examples/enterprise-http-service.mjs](../examples/enterprise-http-service.mjs).
+
+## Enterprise edge responsibilities
+
+Keep these concerns outside Locale and in your existing platform or gateway:
+
+- TLS termination
+- service-to-service auth or mTLS
+- rate limiting
+- logging, metrics, and tracing
+- ingress and network policy
+- approval UI
+
 ## Enterprise operating model
 
 - keep policy packs under source control
@@ -74,4 +89,4 @@ The following must remain identical across local and cloud:
 - chronology
 - verification workflow
 
-The difference in v0.2 is the constructor boundary, not the MCP wire contract.
+The difference in v0.3 is the constructor boundary, not the MCP wire contract.

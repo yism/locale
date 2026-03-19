@@ -30,6 +30,8 @@ Use:
 - `POST /mcp`
 - `GET /health`
 
+This packaged HTTP path is the reference runtime. For enterprise deployment, embed `createAuthority(config)` in your own service bootstrap and expose `createHttpHandler()` through your existing ingress stack.
+
 ## Minimum compatibility check
 
 Before shipping an integration:
@@ -50,5 +52,6 @@ For production embedding, construct the authority explicitly with `createAuthori
 - [Architecture](./architecture.md)
 - [Migration v0.2](./migration-v0.2.md)
 - [Integration Patterns](./integration-patterns.md)
+- [Enterprise Online Deployment](./enterprise-online.md)
 - [Verification Workflow](./verification-workflow.md)
 - [Host Profiles](./host-profiles)

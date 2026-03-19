@@ -8,6 +8,7 @@
 - [Migration v0.3](./migration-v0.3.md)
 - [Local Quickstart](./quickstart-local.md)
 - [Cloud Deployment](./deploy-cloud.md)
+- [Enterprise Online Deployment](./enterprise-online.md)
 - [Integration Patterns](./integration-patterns.md)
 - [Integration Fast Path](./integration-fast-path.md)
 - [MCP Builder Use Cases](./use-cases-mcp-builders.md)
@@ -33,4 +34,4 @@
 
 - MCP builders: start with [Architecture](./architecture.md) and [Integration Patterns](./integration-patterns.md)
 - individual developers: start with [Local Quickstart](./quickstart-local.md)
-- platform and enterprise teams: start with [Cloud Deployment](./deploy-cloud.md) and [Verification Workflow](./verification-workflow.md)
+- platform and enterprise teams: start with [Enterprise Online Deployment](./enterprise-online.md) and [Verification Workflow](./verification-workflow.md)
