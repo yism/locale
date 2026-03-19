@@ -70,7 +70,7 @@
     },
     {
       "path": "docs/compare-and-decide.md",
-      "sha256": "166cf4efee25f03cafea71b980fe232cc89896e6181a0968ba4b55d4d71f3538"
+      "sha256": "f3477aa7489c6dc629f190e83ec9c55b1c8bb2acc4a89bc6fb101158039a3e34"
     },
     {
       "path": "docs/conformance-spec-v0.1.md",
@@ -78,7 +78,7 @@
     },
     {
       "path": "docs/deploy-cloud.md",
-      "sha256": "98e8bab52ded0d94d4fe8d86da5e24d45774070c8229529d4e0d2ede9e6139dd"
+      "sha256": "a1893941ce3a9432613ead1b03cc86e68f6e21e426bc7882379e12ad10c6d870"
     },
     {
       "path": "docs/fixtures/capabilities-get.request.json",
@@ -174,7 +174,7 @@
     },
     {
       "path": "docs/use-cases-mcp-builders.md",
-      "sha256": "78a7dab2697eb7753a04eb586f83a1912747f917299b2b46668c14d936c54cb9"
+      "sha256": "587fbe0853888fd85dc0c32478a4156429f7835f1bd5d3f161fdef5c3a2fa3a2"
     },
     {
       "path": "docs/verification-workflow.md",

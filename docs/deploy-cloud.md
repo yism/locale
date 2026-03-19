@@ -2,7 +2,9 @@
 
 ## Goal
 
-Deploy the same evaluate-only MCP surface in a containerized environment while keeping reference and runtime behavior distinct.
+Deploy the same agent policy layer in a containerized environment while keeping reference and runtime behavior distinct.
+
+This page is for teams searching for cloud deployment guidance for MCP policy enforcement, offline verification, and agent action control.
 
 ## Reference HTTP mode
 
